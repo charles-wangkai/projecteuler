@@ -5,10 +5,14 @@ import java.util.stream.IntStream;
 
 public class Solution {
   public static void main(String[] args) {
-    System.out.println(solve(IntStream.range(0, 10).boxed().collect(Collectors.toList()), 999_999));
+    System.out.println(solve());
   }
 
-  static String solve(List<Integer> digits, int k) {
+  static String solve() {
+    return findPermutation(IntStream.range(0, 10).boxed().collect(Collectors.toList()), 999_999);
+  }
+
+  static String findPermutation(List<Integer> digits, int k) {
     if (digits.isEmpty()) {
       return "";
     }
@@ -19,7 +23,7 @@ public class Solution {
     int index = k / unit;
     int digit = digits.remove(index);
 
-    return String.format("%d%s", digit, solve(digits, k % unit));
+    return String.format("%d%s", digit, findPermutation(digits, k % unit));
   }
 
   static int computeFactorial(int n) {
