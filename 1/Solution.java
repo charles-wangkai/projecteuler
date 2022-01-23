@@ -7,7 +7,7 @@ public class Solution {
     System.out.println(solve(1000));
   }
 
-  static int solve(int limit) {
-    return IntStream.range(1, limit).filter(x -> x % 3 == 0 || x % 5 == 0).sum();
+  static int solve(int n) {
+    return IntStream.range(1, n).filter(x -> x % 3 == 0 || x % 5 == 0).sum();
   }
 }
