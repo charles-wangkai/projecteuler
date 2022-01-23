@@ -1,30 +1,27 @@
+import java.util.stream.IntStream;
+
 public class Solution {
   static final int LIMIT = 1_000_000;
-  static final String fraction = buildFraction();
 
   public static void main(String[] args) {
-    assert solve(12) == 1;
-
-    System.out.println(
-        solve(1)
-            * solve(10)
-            * solve(100)
-            * solve(1000)
-            * solve(10000)
-            * solve(100000)
-            * solve(1000000));
+    System.out.println(solve());
   }
 
-  static String buildFraction() {
-    StringBuilder result = new StringBuilder();
-    for (int i = 1; result.length() < LIMIT; ++i) {
-      result.append(i);
+  static int solve() {
+    StringBuilder fraction = new StringBuilder();
+    for (int i = 1; fraction.length() < LIMIT; ++i) {
+      fraction.append(i);
     }
 
-    return result.toString();
+    assert getDigit(fraction, 12) == 1;
+
+    return IntStream.of(1, 10, 100, 1000, 10000, 100000, 1000000)
+        .map(i -> getDigit(fraction, i))
+        .reduce((x, y) -> x * y)
+        .getAsInt();
   }
 
-  static int solve(int n) {
-    return fraction.charAt(n - 1) - '0';
+  static int getDigit(StringBuilder fraction, int pos) {
+    return fraction.charAt(pos - 1) - '0';
   }
 }
