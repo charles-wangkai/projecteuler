@@ -8,8 +8,8 @@ public class Solution {
     System.out.println(solve(2_000_000));
   }
 
-  static long solve(int limit) {
-    boolean[] primes = new boolean[limit];
+  static long solve(int n) {
+    boolean[] primes = new boolean[n];
     Arrays.fill(primes, true);
 
     for (int i = 2; i < primes.length; ++i) {
