@@ -1,23 +1,30 @@
 import java.util.stream.IntStream;
 
 public class Solution {
+  static final int TRUNCATABLE_NUM = 11;
+
   public static void main(String[] args) {
-    assert solve(3797);
+    System.out.println(solve());
+  }
+
+  static int solve() {
+    assert isTruncatable(3797);
 
     int result = 0;
     int value = 10;
-    for (int i = 0; i < 11; ++i) {
-      while (!solve(value)) {
+    for (int i = 0; i < TRUNCATABLE_NUM; ++i) {
+      while (!isTruncatable(value)) {
         ++value;
       }
 
       result += value;
       ++value;
     }
-    System.out.println(result);
+
+    return result;
   }
 
-  static boolean solve(int n) {
+  static boolean isTruncatable(int n) {
     String s = String.valueOf(n);
 
     return IntStream.range(0, s.length()).allMatch(i -> isPrime(Integer.parseInt(s.substring(i))))
