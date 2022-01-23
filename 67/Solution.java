@@ -6,7 +6,11 @@ import java.util.Arrays;
 
 public class Solution {
   public static void main(String[] args) throws Throwable {
-    String[] triangle =
+    System.out.println(solve());
+  }
+
+  static int solve() throws Throwable {
+    int[][] values =
         Arrays.stream(
                 HttpClient.newHttpClient()
                     .send(
@@ -18,14 +22,6 @@ public class Solution {
                         BodyHandlers.ofString())
                     .body()
                     .split("\n"))
-            .toArray(String[]::new);
-
-    System.out.println(solve(triangle));
-  }
-
-  static int solve(String[] triangle) {
-    int[][] values =
-        Arrays.stream(triangle)
             .map(line -> Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).toArray())
             .toArray(int[][]::new);
 
