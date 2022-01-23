@@ -7,6 +7,10 @@ import java.util.stream.IntStream;
 
 public class Solution {
   public static void main(String[] args) throws Throwable {
+    System.out.println(solve());
+  }
+
+  static int solve() throws Throwable {
     String[] names =
         Arrays.stream(
                 HttpClient.newHttpClient()
@@ -24,12 +28,12 @@ public class Solution {
             .toArray(String[]::new);
 
     assert names[937].equals("COLIN");
-    assert solve("COLIN") == 53;
+    assert computeScore("COLIN") == 53;
 
-    System.out.println(IntStream.range(0, names.length).map(i -> (i + 1) * solve(names[i])).sum());
+    return IntStream.range(0, names.length).map(i -> (i + 1) * computeScore(names[i])).sum();
   }
 
-  static int solve(String name) {
+  static int computeScore(String name) {
     return name.chars().map(ch -> ch - 'A' + 1).sum();
   }
 }
