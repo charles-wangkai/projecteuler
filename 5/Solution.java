@@ -7,8 +7,8 @@ public class Solution {
     System.out.println(solve(20));
   }
 
-  static long solve(int limit) {
-    return IntStream.rangeClosed(1, limit).asLongStream().reduce(Solution::lcm).getAsLong();
+  static long solve(int n) {
+    return IntStream.rangeClosed(1, n).asLongStream().reduce(Solution::lcm).getAsLong();
   }
 
   static long lcm(long x, long y) {
