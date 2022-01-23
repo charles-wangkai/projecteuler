@@ -2,13 +2,17 @@ import java.util.stream.IntStream;
 
 public class Solution {
   public static void main(String[] args) {
-    assert solve(220);
-    assert solve(284);
-
-    System.out.println(IntStream.range(1, 10000).filter(Solution::solve).sum());
+    System.out.println(solve());
   }
 
-  static boolean solve(int n) {
+  static int solve() {
+    assert isAmicable(220);
+    assert isAmicable(284);
+
+    return IntStream.range(1, 10000).filter(Solution::isAmicable).sum();
+  }
+
+  static boolean isAmicable(int n) {
     return d(n) != n && d(d(n)) == n;
   }
 
