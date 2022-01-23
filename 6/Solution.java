@@ -7,9 +7,9 @@ public class Solution {
     System.out.println(solve(100));
   }
 
-  static int solve(int limit) {
-    return square(IntStream.rangeClosed(1, limit).sum())
-        - IntStream.rangeClosed(1, limit).map(Solution::square).sum();
+  static int solve(int n) {
+    return square(IntStream.rangeClosed(1, n).sum())
+        - IntStream.rangeClosed(1, n).map(Solution::square).sum();
   }
 
   static int square(int x) {
