@@ -6,7 +6,13 @@ import java.util.Arrays;
 
 public class Solution {
   public static void main(String[] args) throws Throwable {
-    String[] words =
+    System.out.println(solve());
+  }
+
+  static int solve() throws Throwable {
+    assert isTriangleWord("SKY");
+
+    return (int)
         Arrays.stream(
                 HttpClient.newHttpClient()
                     .send(
@@ -19,14 +25,11 @@ public class Solution {
                     .body()
                     .replace("\"", "")
                     .split(","))
-            .toArray(String[]::new);
-
-    assert solve("SKY");
-
-    System.out.println(Arrays.stream(words).filter(Solution::solve).count());
+            .filter(Solution::isTriangleWord)
+            .count();
   }
 
-  static boolean solve(String word) {
+  static boolean isTriangleWord(String word) {
     return isTriangleNumber(word.chars().map(ch -> ch - 'A' + 1).sum());
   }
 
