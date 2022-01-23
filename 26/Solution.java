@@ -5,14 +5,17 @@ import java.util.stream.IntStream;
 
 public class Solution {
   public static void main(String[] args) {
-    assert solve(6) == 1;
-    assert solve(7) == 6;
-
-    System.out.println(
-        IntStream.range(2, 1000).boxed().max(Comparator.comparing(Solution::solve)).get());
+    System.out.println(solve());
   }
 
-  static int solve(int d) {
+  static int solve() {
+    assert computeCycle(6) == 1;
+    assert computeCycle(7) == 6;
+
+    return IntStream.range(2, 1000).boxed().max(Comparator.comparing(Solution::computeCycle)).get();
+  }
+
+  static int computeCycle(int d) {
     Map<Integer, Integer> remainderToIndex = new HashMap<>();
     int remainder = 1;
     while (true) {
