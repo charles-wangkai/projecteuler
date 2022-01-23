@@ -1,24 +1,28 @@
-
 public class Solution {
   public static void main(String[] args) {
-    assert solve(1, 41) == 40;
-    assert solve(-79, 1601) == 80;
+    System.out.println(solve());
+  }
+
+  static int solve() {
+    assert computeConsecutiveNum(1, 41) == 40;
+    assert computeConsecutiveNum(-79, 1601) == 80;
 
     int result = 0;
     int maxConsecutiveNum = -1;
     for (int a = -999; a <= 999; ++a) {
       for (int b = -1000; b <= 1000; ++b) {
-        int consecutiveNum = solve(a, b);
+        int consecutiveNum = computeConsecutiveNum(a, b);
         if (consecutiveNum > maxConsecutiveNum) {
           maxConsecutiveNum = consecutiveNum;
           result = a * b;
         }
       }
     }
-    System.out.println(result);
+
+    return result;
   }
 
-  static int solve(int a, int b) {
+  static int computeConsecutiveNum(int a, int b) {
     for (int n = 0; ; ++n) {
       if (!isPrime(n * n + a * n + b)) {
         return n;
