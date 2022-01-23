@@ -1,10 +1,10 @@
 public class Solution {
   public static void main(String[] args) {
-    System.out.println(String.format("%.9f", solve()));
+    System.out.println(solve());
   }
 
-  static double solve() {
-    return (double) search(10, 7, 20, 0, 1) / C(70, 20);
+  static String solve() {
+    return String.format("%.9f", (double) search(10, 7, 20, 0, 1) / C(70, 20));
   }
 
   static long search(int maxNumInColor, int restColorNum, int rest, int colorCount, long factor) {
